@@ -1,0 +1,65 @@
+{
+  "tool": {
+    "name": "InfoLeakHunter",
+    "version": "1.0.0",
+    "description": "Automated Information Disclosure Vulnerability Scanner"
+  },
+  "scan_summary": {
+    "total_urls": 1,
+    "completed_urls": 1,
+    "failed_urls": 0,
+    "total_findings": 3,
+    "duration_seconds": 12.45,
+    "severity_counts": {
+      "Critical": 1,
+      "High": 1,
+      "Medium": 1,
+      "Low": 0,
+      "Informational": 0
+    }
+  },
+  "findings": [
+    {
+      "target": "https://example.com",
+      "module": "sensitive_file",
+      "title": "Sensitive file exposed: .env",
+      "severity": "High",
+      "confidence": "Certain",
+      "evidence": "DB_PASSWORD=supersecret\nAPI_KEY=1234567890abcdef\nAWS_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE",
+      "cwe": "CWE-530",
+      "owasp": "OWASP:API8",
+      "recommendation": "Remove sensitive files from the web root. Store configuration and credentials outside the document root.",
+      "url": "https://example.com/.env",
+      "timestamp": "2026-06-06T12:00:00+00:00",
+      "tags": ["sensitive-file", "env"]
+    },
+    {
+      "target": "https://example.com",
+      "module": "http_header",
+      "title": "Information disclosure via Server header",
+      "severity": "Medium",
+      "confidence": "Certain",
+      "evidence": "Server: nginx/1.18.0 (Ubuntu)",
+      "cwe": "CWE-200",
+      "owasp": "OWASP:API4",
+      "recommendation": "Configure the web server to suppress verbose headers.",
+      "url": "https://example.com/",
+      "timestamp": "2026-06-06T12:00:00+00:00",
+      "tags": ["header", "server"]
+    },
+    {
+      "target": "https://example.com",
+      "module": "secrets",
+      "title": "AWS Access Key ID discovered",
+      "severity": "Critical",
+      "confidence": "Certain",
+      "evidence": "AKIAIOSFODNN7EXAMPLE exposed in JavaScript file",
+      "cwe": "CWE-798",
+      "owasp": "OWASP:API8",
+      "recommendation": "Immediately revoke and rotate exposed credentials. Use a vault solution.",
+      "url": "https://example.com/js/app.bundle.js",
+      "timestamp": "2026-06-06T12:00:00+00:00",
+      "tags": ["secret", "aws-access-key"]
+    }
+  ]
+}

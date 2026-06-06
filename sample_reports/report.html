@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>InfoLeakHunter Report - https://example.com</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background: #0f1117; color: #e1e4e8; line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+.header { background: linear-gradient(135deg, #1a1d24 0%, #2d333b 100%); padding: 30px; border-radius: 8px; margin-bottom: 24px; border: 1px solid #30363d; }
+.header h1 { color: #58a6ff; font-size: 28px; margin-bottom: 8px; }
+.header .meta { color: #8b949e; font-size: 14px; }
+.summary { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; text-align: center; }
+.stat-card .value { font-size: 32px; font-weight: bold; }
+.stat-card .label { color: #8b949e; font-size: 12px; text-transform: uppercase; margin-top: 4px; }
+.critical .value { color: #f85149; } .high .value { color: #d29922; } .medium .value { color: #d29922; } .low .value { color: #58a6ff; } .info .value { color: #3fb950; }
+.severity-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; margin: 16px 0; }
+.severity-bar div { height: 100%; }
+.sev-critical { background: #f85149; } .sev-high { background: #d29922; } .sev-medium { background: #9e6a03; } .sev-low { background: #58a6ff; } .sev-info { background: #3fb950; }
+.finding { background: #161b22; border: 1px solid #30363d; border-radius: 8px; margin-bottom: 16px; padding: 20px; }
+.finding-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+.finding-title { font-size: 16px; font-weight: 600; color: #f0f6fc; }
+.severity-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 600; text-transform: uppercase; }
+.sev-Critical { background: #f85149; color: #fff; } .sev-High { background: #d29922; color: #000; } .sev-Medium { background: #9e6a03; color: #fff; } .sev-Low { background: #58a6ff; color: #000; } .sev-Informational { background: #3fb950; color: #000; }
+.finding-meta { display: flex; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+.finding-meta span { font-size: 12px; color: #8b949e; }
+.finding-meta strong { color: #e1e4e8; }
+.finding-evidence { background: #0d1117; padding: 12px; border-radius: 4px; margin-top: 8px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; font-size: 12px; white-space: pre-wrap; word-break: break-all; max-height: 300px; overflow-y: auto; color: #7ee787; }
+.finding-recommendation { margin-top: 12px; padding: 12px; background: #1a1d24; border-left: 3px solid #58a6ff; border-radius: 4px; font-size: 13px; color: #c9d1d9; }
+.finding-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+.tag { display: inline-block; padding: 2px 6px; background: #21262d; border: 1px solid #30363d; border-radius: 4px; font-size: 10px; color: #8b949e; }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>InfoLeakHunter Scan Report</h1>
+<div class="meta">Generated: 2026-06-06 12:00:00 UTC | Target: https://example.com | Duration: 12.5s</div>
+</div>
+<h2>Executive Summary</h2>
+<div class="summary">
+<div class="stat-card"><div class="value">1</div><div class="label">URLs Scanned</div></div>
+<div class="stat-card"><div class="value">3</div><div class="label">Total Findings</div></div>
+<div class="stat-card critical"><div class="value">1</div><div class="label">Critical</div></div>
+<div class="stat-card high"><div class="value">1</div><div class="label">High</div></div>
+<div class="stat-card medium"><div class="value">1</div><div class="label">Medium</div></div>
+<div class="stat-card low"><div class="value">0</div><div class="label">Low</div></div>
+</div>
+<div class="severity-bar">
+<div class="sev-critical" style="width: 33.3%;"></div>
+<div class="sev-high" style="width: 33.3%;"></div>
+<div class="sev-medium" style="width: 33.3%;"></div>
+</div>
+<h2>Detailed Findings</h2>
+<div class="finding">
+<div class="finding-header">
+<div class="finding-title">AWS Access Key ID discovered</div>
+<span class="severity-badge sev-Critical">Critical</span>
+</div>
+<div class="finding-meta">
+<span><strong>Target:</strong> https://example.com</span>
+<span><strong>Module:</strong> secrets</span>
+<span><strong>Confidence:</strong> Certain</span>
+<span><strong>CWE:</strong> CWE-798</span>
+<span><strong>OWASP:</strong> OWASP:API8</span>
+</div>
+<div class="finding-evidence">AKIAIOSFODNN7EXAMPLE exposed in JavaScript file</div>
+<div class="finding-recommendation">Immediately revoke and rotate exposed credentials. Use a vault solution.</div>
+</div>
+<div class="finding">
+<div class="finding-header">
+<div class="finding-title">Sensitive file exposed: .env</div>
+<span class="severity-badge sev-High">High</span>
+</div>
+<div class="finding-meta">
+<span><strong>Target:</strong> https://example.com</span>
+<span><strong>Module:</strong> sensitive_file</span>
+<span><strong>Confidence:</strong> Certain</span>
+<span><strong>CWE:</strong> CWE-530</span>
+<span><strong>OWASP:</strong> OWASP:API8</span>
+</div>
+<div class="finding-evidence">DB_PASSWORD=supersecret
+API_KEY=1234567890abcdef
+AWS_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE</div>
+<div class="finding-recommendation">Remove sensitive files from the web root. Store credentials outside the document root.</div>
+</div>
+<div class="finding">
+<div class="finding-header">
+<div class="finding-title">Information disclosure via Server header</div>
+<span class="severity-badge sev-Medium">Medium</span>
+</div>
+<div class="finding-meta">
+<span><strong>Target:</strong> https://example.com</span>
+<span><strong>Module:</strong> http_header</span>
+<span><strong>Confidence:</strong> Certain</span>
+<span><strong>CWE:</strong> CWE-200</span>
+<span><strong>OWASP:</strong> OWASP:API4</span>
+</div>
+<div class="finding-evidence">Server: nginx/1.18.0 (Ubuntu)</div>
+<div class="finding-recommendation">Configure the web server to suppress verbose headers.</div>
+</div>
+</div>
+</body>
+</html>
