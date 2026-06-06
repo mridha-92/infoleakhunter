@@ -53,7 +53,7 @@ cd infoleakhunter
 pip install -r requirements.txt
 
 # Verify installation
-python infoleakhunter.py --version
+python run.py --version
 ```
 
 ### System Requirements
@@ -68,51 +68,51 @@ python infoleakhunter.py --version
 
 ```bash
 # Scan a single URL
-python infoleakhunter.py -u https://example.com
+python run.py -u https://example.com
 
 # Scan multiple URLs from a file
-python infoleakhunter.py -l urls.txt
+python run.py -l urls.txt
 
 # Scan with verbose output
-python infoleakhunter.py -u https://example.com -v
+python run.py -u https://example.com -v
 ```
 
 ### Generating Reports
 
 ```bash
 # JSON report
-python infoleakhunter.py -u https://example.com --json report.json
+python run.py -u https://example.com --json report.json
 
 # HTML dashboard
-python infoleakhunter.py -u https://example.com --html report.html
+python run.py -u https://example.com --html report.html
 
 # CSV report
-python infoleakhunter.py -u https://example.com --csv report.csv
+python run.py -u https://example.com --csv report.csv
 
 # Markdown report
-python infoleakhunter.py -u https://example.com --md report.md
+python run.py -u https://example.com --md report.md
 
 # Multiple reports at once
-python infoleakhunter.py -u https://example.com --json report.json --html report.html --md report.md
+python run.py -u https://example.com --json report.json --html report.html --md report.md
 ```
 
 ### Advanced Usage
 
 ```bash
 # High concurrency scanning (500 threads)
-python infoleakhunter.py -l urls.txt --threads 500
+python run.py -l urls.txt --threads 500
 
 # Custom configuration
-python infoleakhunter.py -u https://example.com --config custom_config.yaml
+python run.py -u https://example.com --config custom_config.yaml
 
 # Disable specific checks
-python infoleakhunter.py -u https://example.com --no-dns --no-js --no-metadata
+python run.py -u https://example.com --no-dns --no-js --no-metadata
 
 # Disable SSL verification (for internal/testing targets)
-python infoleakhunter.py -u https://internal.example.com --no-verify-ssl
+python run.py -u https://internal.example.com --no-verify-ssl
 
 # Quiet mode (no console output)
-python infoleakhunter.py -u https://example.com --html report.html -q
+python run.py -u https://example.com --html report.html -q
 ```
 
 ## Configuration

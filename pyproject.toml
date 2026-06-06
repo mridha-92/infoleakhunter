@@ -52,9 +52,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/infoleakhunter"
-Repository = "https://github.com/yourusername/infoleakhunter"
-Issues = "https://github.com/yourusername/infoleakhunter/issues"
+Homepage = "https://github.com/mridha-92/infoleakhunter"
+Repository = "https://github.com/mridha-92/infoleakhunter"
+Issues = "https://github.com/mridha-92/infoleakhunter/issues"
 
 [project.scripts]
 infoleakhunter = "infoleakhunter.cli:main"
