@@ -17,7 +17,7 @@ SECRET_PATTERNS: list[tuple[str, str, str, re.Pattern[str], str]] = [
     ("aws_secret_key", "AWS Secret Access Key", "Critical",
      re.compile(r"(?<![A-Za-z0-9/+=])([A-Za-z0-9/+=]{40})(?![A-Za-z0-9/+=])")),
     ("aws_session_token", "AWS Session Token", "Critical",
-     re.compile(r"(?<![A-Za-z0-9/+=])(FQoGZXIvYXdzEH[\\w\\-!$%&'()*+,./:;<=>?@\\[\\]^`{|}~]{100,})(?![A-Za-z0-9/+=])")),
+     re.compile(r"(?<![A-Za-z0-9/+=])(FQoGZXIvYXdzEH[\w\-!$%&'()*+,./:;<=>?@\[\]^`{|}~]{100,})(?![A-Za-z0-9/+=])")),
     ("azure_connection", "Azure Connection String", "Critical",
      re.compile(r"(?i)(DefaultEndpointsProtocol=https?;AccountName=[^;]+;AccountKey=[^;]+)")),
     ("azure_subscription", "Azure Subscription Key", "High",
